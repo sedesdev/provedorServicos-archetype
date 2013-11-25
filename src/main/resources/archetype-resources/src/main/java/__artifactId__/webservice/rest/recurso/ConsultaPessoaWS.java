@@ -1,7 +1,7 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package}.webservice.rest.recurso;
+package ${package}.__artifactId__.webservice.rest.recurso;
 
 import java.util.List;
 
@@ -10,9 +10,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
-import ${package}.infra.persistencia.RepositorioPessoaJDBC;
-import ${package}.util.RepositorioUtil;
-import ${package}.webservice.rest.info.PessoaInfo;
+import ${package}.__artifactId__.infra.persistencia.RepositorioPessoaJDBC;
+import ${package}.__artifactId__.util.RepositorioUtil;
+import ${package}.__artifactId__.webservice.rest.info.PessoaInfo;
 
 @Path("")
 public class ConsultaPessoaWS {

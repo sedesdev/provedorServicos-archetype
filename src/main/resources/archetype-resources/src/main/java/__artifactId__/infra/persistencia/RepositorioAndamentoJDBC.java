@@ -1,13 +1,13 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package}.infra.persistencia;
+package ${package}.__artifactId__.infra.persistencia;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
-import ${package}.webservice.rest.info.AndamentoInfo;
+import ${package}.__artifactId__.webservice.rest.info.AndamentoInfo;
 import oracle.jdbc.OracleTypes;
 
 public class RepositorioAndamentoJDBC {

@@ -1,7 +1,7 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package}.infra.persistencia;
+package ${package}.__artifactId__.infra.persistencia;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -10,7 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import ${package}.webservice.rest.info.PessoaInfo;
+import ${package}.__artifactId__.webservice.rest.info.PessoaInfo;
 
 public class RepositorioPessoaJDBC {
 	

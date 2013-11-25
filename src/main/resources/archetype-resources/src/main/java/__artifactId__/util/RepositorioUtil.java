@@ -1,11 +1,11 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package}.util;
+package ${package}.__artifactId__.util;
 
 import java.sql.Connection;
 
-import ${package}.infra.persistencia.fabrica.FabricaRepositoriosJDBC;
+import ${package}.__artifactId__.infra.persistencia.fabrica.FabricaRepositoriosJDBC;
 
 /**
  * 

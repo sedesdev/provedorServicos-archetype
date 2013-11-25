@@ -1,7 +1,7 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package}.webservice.rest.recurso;
+package ${package}.__artifactId__.webservice.rest.recurso;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,9 +13,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
-import ${package}.infra.persistencia.RepositorioAndamentoJDBC;
-import ${package}.util.RepositorioUtil;
-import ${package}.webservice.rest.info.AndamentoInfo;
+import ${package}.__artifactId__.infra.persistencia.RepositorioAndamentoJDBC;
+import ${package}.__artifactId__.util.RepositorioUtil;
+import ${package}.__artifactId__.webservice.rest.info.AndamentoInfo;
 
 @Path("")
 public class ConsultaProcessoWS {
