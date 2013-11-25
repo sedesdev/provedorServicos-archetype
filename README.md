@@ -1,4 +1,4 @@
-seam3-jboss7-archetype
+provedorServicos-archetype
 ======================
 
 Resumo
