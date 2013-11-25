@@ -9,7 +9,7 @@
 	<packaging>war</packaging>
 	<version>${version}</version>
 	<name>__artifactId__</name>
-
+ 
 	<properties>
 		<internal.repo.path>file:\\C:\mvn-repo</internal.repo.path>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -130,8 +130,8 @@
 					</excludes>
 					<replacements>
 						<replacement>
-							<token>provedorServicosJudiciario</token>
-							<value>provedorServicosJudiciario</value>
+							<token>__artifactId__</token>
+							<value>${artifactId}</value>
 						</replacement>
 					</replacements>
 				</configuration>
