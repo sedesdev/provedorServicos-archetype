@@ -27,7 +27,8 @@ public class RepositorioPessoaJDBC {
 	public List<PessoaInfo> listar(){
 		List<PessoaInfo> pessoas = new ArrayList<PessoaInfo>();
 		
-		String sql = "select NM_AGREGADOR from ADMGESTOC.AGREGADOR ";
+		
+		String sql = "select DNAME from SANCOES.DEPT ";
 		
 		Statement stmt;
 		ResultSet rows;
@@ -36,9 +37,9 @@ public class RepositorioPessoaJDBC {
 			rows = stmt.executeQuery(sql);
 			
 			while (rows.next()) {
-				pessoas.add(new PessoaInfo(rows.getString("NM_AGREGADOR")));
+				pessoas.add(new PessoaInfo(rows.getString("DNAME")));
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -10,8 +10,8 @@
 		<connection-url>jdbc:oracle:thin:@localhost:1521:xe</connection-url>
 		<driver>oracle</driver>
 		<security>
-			<user-name>sancoes</user-name>
-			<password>sancoes01</password>
+			<user-name>system</user-name>
+			<password>12345678</password>
 		</security>
 		<pool>
 			<min-pool-size>5</min-pool-size>
