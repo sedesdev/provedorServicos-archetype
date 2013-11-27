@@ -55,6 +55,10 @@ Considerações
 
 O projeto recém criado contém a estrutura padrão para desenvolvimento de sistemas nas tecnologias acima descritas, servindo como um guia para iniciar a implementação propriamente dita.
 
+Para publicar no JBoss 7.1.1, executar:
+
+    mvn jboss-as:deploy
+
 
 Referências Externas
 ====================

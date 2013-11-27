@@ -1,7 +1,7 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package}.__artifactId__.util;
+package ${package}.__artifactId__.infra.persistencia.bd;
 
 import java.sql.Connection;
 
@@ -15,10 +15,11 @@ import javax.sql.DataSource;
  * @author rodrigo
  *
  */
-public class BancoDeDadosJNDI 
+public class BancoDeDadosJNDI implements BancoDeDados
 {
-	private static final String JNDI_PATH = "java:jboss/datasources/__artifactId__DS"; 
+	private static final String JNDI_PATH = "java:jboss/datasources/orcamentarioDS"; 
 	
+	@Override
 	public Connection getConnection() {
 		try{
 			Context ctx = new InitialContext();

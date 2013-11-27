@@ -5,6 +5,8 @@ package ${package}.__artifactId__.util;
 
 import java.sql.Connection;
 
+import ${package}.__artifactId__.infra.persistencia.bd.BancoDeDados;
+import ${package}.__artifactId__.infra.persistencia.bd.BancoDeDadosJNDI;
 import ${package}.__artifactId__.infra.persistencia.fabrica.FabricaRepositoriosJDBC;
 
 /**
@@ -18,7 +20,11 @@ public class RepositorioUtil {
 	private FabricaRepositoriosJDBC fabrica; 
 
 	public RepositorioUtil() {
-		this.conexao = new BancoDeDadosJNDI().getConnection();
+		this(new BancoDeDadosJNDI());
+	}
+	
+	public RepositorioUtil(BancoDeDados bancoDeDados) {
+		this.conexao = bancoDeDados.getConnection();
 		fabrica = new FabricaRepositoriosJDBC(conexao);
 	}
 	
