@@ -9,6 +9,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class PessoaInfo {
 
 	private String nome;
+	
+	public PessoaInfo() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public PessoaInfo(String nome){
 		this.nome = nome;
