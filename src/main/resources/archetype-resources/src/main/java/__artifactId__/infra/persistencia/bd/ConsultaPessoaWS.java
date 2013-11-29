@@ -1,7 +1,7 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package}.__artifactId__.webservice.rest.recurso;
+package ${package}.__artifactId__.infra.persistencia.bd;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class ConsultaPessoaWS {
 	@GET
 	@Path("/pessoas")
 	@Produces("application/json")
-	//@TypeHint(qualifiedName="${package}.__artifactId__.webservice.rest.info.PessoaInfo", value=PessoaInfo.class)
+	@TypeHint(qualifiedName="${package}.__artifactId__.webservice.rest.info.PessoaInfo", value=PessoaInfo.class)
 	public Response pojo() {
 		RepositorioUtil repoUtil = new RepositorioUtil();
 		RepositorioPessoaJDBC repoPessoa = repoUtil.criarFabricaRepositorio().construirRepositorioPessoa();

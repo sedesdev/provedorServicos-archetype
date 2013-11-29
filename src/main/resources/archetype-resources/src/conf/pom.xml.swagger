@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<!-- POM padrao para desenvolvimento de aplicativos usando as tecnologias 
+		JEE6: RestEasy -->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>br.jus.trese</groupId>
+	<artifactId>provedorServicos</artifactId>
+	<packaging>war</packaging>
+	<version>0.1-SNAPSHOT</version>
+	<name>__artifactId__</name>
+
+	<properties>
+		<internal.repo.path>file:\\C:\mvn-repo</internal.repo.path>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<server.name>homologa-sedes@tre-se.jus.br</server.name>
+	</properties>
+
+
+	<distributionManagement>
+		<repository>
+			<id>internal.repo</id>
+			<name>Internal Repository</name>
+			<url>${internal.repo.path}</url>
+		</repository>
+	</distributionManagement>
+
+	<repositories>
+		<repository>
+			<id>JBOSS_NEXUS</id>
+			<url>http://repository.jboss.org/nexus/content/groups/public</url>
+		</repository>
+		<repository>
+			<id>codelds</id>
+			<url>http://dev.mapfish.org/maven/repository</url>
+		</repository>
+	</repositories>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.jboss.spec</groupId>
+				<artifactId>jboss-javaee-web-6.0</artifactId>
+				<version>2.0.0.Final</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<!-- JUnit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.7</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.1</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>oracle</groupId>
+			<artifactId>ojdbc</artifactId>
+			<version>11.1.0.7.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- RestEasy (se nao usar servicos, pode remover) -->
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jaxb-provider</artifactId>
+			<version>2.3.2.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jackson-provider</artifactId>
+			<version>2.3.2.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jaxrs</artifactId>
+			<version>2.3.2.Final</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javassist</groupId>
+					<artifactId>javassist</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-cdi</artifactId>
+			<version>2.3.2.Final</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javassist</groupId>
+					<artifactId>javassist</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- Enunciate -->
+		<dependency>
+			<groupId>org.codehaus.enunciate</groupId>
+			<artifactId>enunciate-rt</artifactId>
+			<version>1.27</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.enunciate</groupId>
+			<artifactId>enunciate-swagger</artifactId>
+			<version>1.27</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>__artifactId__</finalName>
+		<plugins>
+			<!-- Realiza o replace do nome do projeto no codigo -->
+			<plugin>
+				<groupId>com.google.code.maven-replacer-plugin</groupId>
+				<artifactId>replacer</artifactId>
+				<version>1.5.2</version>
+				<executions>
+					<execution>
+						<phase>none</phase>
+						<goals>
+							<goal>replace</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<includes>
+						<include>**/*</include>
+					</includes>
+					<excludes>
+						<exclude>src/main/webapp/resources/**/*</exclude>
+					</excludes>
+					<replacements>
+						<replacement>
+							<token>__artifactId__</token>
+							<value>${artifactId}</value>
+						</replacement>
+					</replacements>
+				</configuration>
+			</plugin>
+			<!-- Realiza a publicacao no JBoss -->
+			<plugin>
+				<groupId>org.jboss.as.plugins</groupId>
+				<artifactId>jboss-as-maven-plugin</artifactId>
+				<version>7.5.Final</version>
+			</plugin>
+			<!-- Documentação com Swagger -->
+			<plugin>
+				<groupId>org.codehaus.enunciate</groupId>
+				<artifactId>maven-enunciate-plugin</artifactId>
+				<version>1.27</version>
+				<configuration>
+					<configFile>src/conf/enunciate.xml</configFile>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>docs</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.codehaus.enunciate</groupId>
+						<artifactId>enunciate-rt</artifactId>
+						<version>1.27</version>
+					</dependency>
+					<dependency>
+						<groupId>org.codehaus.enunciate</groupId>
+						<artifactId>enunciate-swagger</artifactId>
+						<version>1.27</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			<!-- Realiza a cópia do gerado pelo swagger no war -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.basedir}\target\teste</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${project.basedir}\target\enunciate\generate\swagger</directory>
+									<filtering>false</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
