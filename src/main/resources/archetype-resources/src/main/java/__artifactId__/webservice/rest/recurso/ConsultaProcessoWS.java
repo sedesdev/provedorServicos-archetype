@@ -4,25 +4,33 @@
 package ${package}.__artifactId__.webservice.rest.recurso;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
+import org.codehaus.enunciate.jaxrs.TypeHint;
+
 import ${package}.__artifactId__.infra.persistencia.RepositorioAndamentoJDBC;
 import ${package}.__artifactId__.util.RepositorioUtil;
 import ${package}.__artifactId__.webservice.rest.info.AndamentoInfo;
+import ${package}.__artifactId__.webservice.rest.info.PessoaInfo;
 
 @Path("")
 public class ConsultaProcessoWS {
 	@GET
-	@Path("/processos")
-    public String pojo() {
-        return "pojo ok @ " + new Date().toString();
+	@Path("/pessoas")
+	@Consumes("application/json")
+	@TypeHint(qualifiedName="${package}.__artifactId__.webservices.rest.info.PessoaInfo", value=PessoaInfo.class)
+    public Response getPessoas() {
+		RepositorioUtil repo = new RepositorioUtil();
+		List<PessoaInfo> p = repo.criarFabricaRepositorio().construirRepositorioPessoa().listar();
+		
+        return Response.ok(p).status(200).build();
 	}
 	
 	

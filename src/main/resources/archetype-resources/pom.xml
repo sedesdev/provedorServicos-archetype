@@ -107,12 +107,7 @@
 		<!-- Enunciate -->
 		<dependency>
 			<groupId>org.codehaus.enunciate</groupId>
-			<artifactId>enunciate-rt</artifactId>
-			<version>1.27</version>
-		</dependency>
-		<dependency>
-			<groupId>org.codehaus.enunciate</groupId>
-			<artifactId>enunciate-swagger</artifactId>
+			<artifactId>enunciate-core-annotations</artifactId>
 			<version>1.27</version>
 		</dependency>
 	</dependencies>
@@ -195,7 +190,7 @@
 							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${project.basedir}\target\__artifactId__</outputDirectory>
+							<outputDirectory>${project.basedir}\target\teste</outputDirectory>
 							<resources>
 								<resource>
 									<directory>${project.basedir}\target\enunciate\generate\swagger</directory>
