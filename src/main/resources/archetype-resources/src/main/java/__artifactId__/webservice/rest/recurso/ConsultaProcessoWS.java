@@ -6,7 +6,6 @@ package ${package}.__artifactId__.webservice.rest.recurso;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -23,8 +22,8 @@ import ${package}.__artifactId__.webservice.rest.info.PessoaInfo;
 @Path("")
 public class ConsultaProcessoWS {
 	@GET
-	@Path("/pessoas")
-	@Consumes("application/json")
+	@Path("/processos")
+	@Produces("application/json")
 	@TypeHint(qualifiedName="${package}.__artifactId__.webservices.rest.info.PessoaInfo", value=PessoaInfo.class)
     public Response getPessoas() {
 		RepositorioUtil repo = new RepositorioUtil();
