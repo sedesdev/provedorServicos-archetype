@@ -17,7 +17,7 @@ import javax.sql.DataSource;
  */
 public class BancoDeDadosJNDI implements BancoDeDados
 {
-	private static final String JNDI_PATH = "java:jboss/datasources/orcamentarioDS"; 
+	private static final String JNDI_PATH = "java:jboss/datasources/__artifactId__DS"; 
 	
 	@Override
 	public Connection getConnection() {

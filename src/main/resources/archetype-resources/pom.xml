@@ -9,10 +9,11 @@
 	<packaging>war</packaging>
 	<version>${version}</version>
 	<name>__artifactId__</name>
- 
+
 	<properties>
 		<internal.repo.path>file:\\C:\mvn-repo</internal.repo.path>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<server.name>homologa-sedes@tre-se.jus.br</server.name>
 	</properties>
 
 
@@ -103,12 +104,23 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<!-- Enunciate -->
+		<dependency>
+			<groupId>org.codehaus.enunciate</groupId>
+			<artifactId>enunciate-rt</artifactId>
+			<version>1.27</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.enunciate</groupId>
+			<artifactId>enunciate-swagger</artifactId>
+			<version>1.27</version>
+		</dependency>
 	</dependencies>
 
-	<!-- Aqui alterar o nome para o nome da aplicacao -->
 	<build>
 		<finalName>__artifactId__</finalName>
 		<plugins>
+			<!-- Realiza o replace do nome do projeto no codigo -->
 			<plugin>
 				<groupId>com.google.code.maven-replacer-plugin</groupId>
 				<artifactId>replacer</artifactId>
@@ -136,11 +148,64 @@
 					</replacements>
 				</configuration>
 			</plugin>
+			<!-- Realiza a publicacao no JBoss -->
 			<plugin>
-                <groupId>org.jboss.as.plugins</groupId>
-                <artifactId>jboss-as-maven-plugin</artifactId>
-                <version>7.5.Final</version>
-            </plugin>
+				<groupId>org.jboss.as.plugins</groupId>
+				<artifactId>jboss-as-maven-plugin</artifactId>
+				<version>7.5.Final</version>
+			</plugin>
+			<!-- Documentação com Swagger -->
+			<plugin>
+				<groupId>org.codehaus.enunciate</groupId>
+				<artifactId>maven-enunciate-plugin</artifactId>
+				<version>1.27</version>
+				<configuration>
+					<configFile>src/conf/enunciate.xml</configFile>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>docs</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.codehaus.enunciate</groupId>
+						<artifactId>enunciate-rt</artifactId>
+						<version>1.27</version>
+					</dependency>
+					<dependency>
+						<groupId>org.codehaus.enunciate</groupId>
+						<artifactId>enunciate-swagger</artifactId>
+						<version>1.27</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			<!-- Realiza a cópia do gerado pelo swagger no war -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.basedir}\target\teste</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${project.basedir}\target\enunciate\generate\swagger</directory>
+									<filtering>false</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 </project>

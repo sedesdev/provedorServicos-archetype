@@ -1,0 +1,38 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0"?>
+<enunciate label="myapp" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://enunciate.codehaus.org/schemas/enunciate-1.27.xsd">
+	<deployment protocol="http" host="${symbol_dollar}{server.name}" context="/__artifactId__" />
+	<namespaces>
+	</namespaces>
+	<webapp />
+	<services>
+		<rest defaultRestSubcontext="/rest" />
+	</services>
+	<modules>
+		<!-- Docs -->
+		<swagger dir="api"/>
+		<amf disabled="true"/>
+		<c disabled="true"/>
+		<csharp disabled="true"/>
+		<cxf disabled="true"/>
+		<docs disabled="true"/>
+		<gwt disabled="true"/>
+		<java-client disabled="true"/>
+		<jaxws disabled="true"/>
+		<jaxws-client disableCompile="true"/>
+		<jaxws-ri disabled="true"/>
+		<jboss disabled="true"/>
+		<jersey disabled="true"/>
+		<obj-c disabled="true"/>
+		<php disabled="true"/>
+		<ruby disabled="true"/>
+		<spring-app disabled="true"/>
+		<xfire disabled="true"/>
+		<xfire-client disabled="true"/>
+		<xml disabled="true"/>
+	</modules>
+</enunciate>
