@@ -190,7 +190,7 @@
 							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${project.basedir}\target\teste</outputDirectory>
+							<outputDirectory>${project.basedir}\target\__artifactId__</outputDirectory>
 							<resources>
 								<resource>
 									<directory>${project.basedir}\target\enunciate\generate\swagger</directory>
