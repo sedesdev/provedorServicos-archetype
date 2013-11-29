@@ -10,6 +10,7 @@ Características do projeto:
 * JDBC
 * JAX-RS 
 * RestEasy Webservices 2.3.2
+* Enunciate 1.27 - API Swagger
 
 Obs.: É necessário JDK 1.6, Maven 3 e o JBoss 7.1.1.Final para executar.
 
@@ -53,7 +54,7 @@ Vá em File > Import > General > Existing Projects into Workspace
 Considerações
 =============
 
-O projeto recém criado contém a estrutura padrão para desenvolvimento de sistemas nas tecnologias acima descritas, servindo como um guia para iniciar a implementação propriamente dita.
+O projeto recém criado contém a estrutura padrão para desenvolvimento de provedores de webservices, servindo como um guia para iniciar a implementação propriamente dita.
 
 Para publicar no JBoss 7.1.1, executar:
 
